@@ -18,6 +18,7 @@ const spendTokens = require('~/models/spendTokens');
 const { getModelMaxTokens } = require('~/utils');
 const BaseClient = require('./BaseClient');
 const { logger } = require('~/config');
+const { getScriptWriterPrompt } = require('./prompts/scriptWriterPrompt');
 
 const HUMAN_PROMPT = '\n\nHuman:';
 const AI_PROMPT = '\n\nAssistant:';
@@ -282,6 +283,8 @@ class AnthropicClient extends BaseClient {
       formattedMessage.tokenCount = orderedMessages[i].tokenCount;
       return formattedMessage;
     });
+
+    this.options.promptPrefix = getScriptWriterPrompt(this.options.promptPrefix ?? '');
 
     if (this.contextHandlers) {
       this.augmentedPrompt = await this.contextHandlers.createContext();

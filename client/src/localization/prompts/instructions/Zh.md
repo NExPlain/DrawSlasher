@@ -1321,7 +1321,7 @@ Write a prompt that is mindful of the nuances in the language with respect to it
 
 - **com_nav_welcome_message**:
   - **english**: How can I help you today?
-  - **translated**: 我今天能帮你做什么？
+  - **translated**: 今天我能如何帮助您完善剧本？
 
 - **com_nav_auto_scroll**:
   - **english**: Auto-scroll to Newest on Open
