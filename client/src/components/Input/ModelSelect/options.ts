@@ -11,15 +11,15 @@ import PluginsByIndex from './PluginsByIndex';
 
 export const options: { [key: string]: FC<TModelSelectProps> } = {
   [EModelEndpoint.openAI]: OpenAI,
-  [EModelEndpoint.custom]: OpenAI,
-  [EModelEndpoint.azureOpenAI]: OpenAI,
-  [EModelEndpoint.bingAI]: BingAI,
-  [EModelEndpoint.google]: Google,
+  // [EModelEndpoint.custom]: OpenAI,
+  // [EModelEndpoint.azureOpenAI]: OpenAI,
+  // [EModelEndpoint.bingAI]: BingAI,
+  // [EModelEndpoint.google]: Google,
   [EModelEndpoint.anthropic]: Anthropic,
-  [EModelEndpoint.chatGPTBrowser]: ChatGPT,
+  // [EModelEndpoint.chatGPTBrowser]: ChatGPT,
 };
 
 export const multiChatOptions = {
   ...options,
-  [EModelEndpoint.gptPlugins]: PluginsByIndex,
+  // [EModelEndpoint.gptPlugins]: PluginsByIndex,
 };

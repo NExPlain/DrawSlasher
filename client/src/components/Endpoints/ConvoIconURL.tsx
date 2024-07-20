@@ -53,7 +53,7 @@ const ConvoIconURL: React.FC<ConvoIconURLProps> = ({
       >
         <img
           src={iconURL}
-          alt={preset?.chatGptLabel ?? preset?.modelLabel ?? ''}
+          alt={'千里'}
           style={styleImageMap[context ?? 'default'] ?? styleImageMap.default}
           className="object-cover"
         />

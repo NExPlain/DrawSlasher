@@ -201,7 +201,6 @@ export const parseConvo = ({
 export const getResponseSender = (endpointOption: t.TEndpointOption): string => {
   const { model, endpoint, endpointType, modelDisplayLabel, chatGptLabel, modelLabel, jailbreak } =
     endpointOption;
-
   if (
     [
       EModelEndpoint.openAI,
@@ -227,7 +226,7 @@ export const getResponseSender = (endpointOption: t.TEndpointOption): string => 
   }
 
   if (endpoint === EModelEndpoint.anthropic) {
-    return modelLabel ?? 'Claude';
+    return modelLabel ?? '千里';
   }
 
   if (endpoint === EModelEndpoint.google) {

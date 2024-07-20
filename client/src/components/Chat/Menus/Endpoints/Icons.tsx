@@ -13,6 +13,7 @@ import {
   Sparkles,
 } from '~/components/svg';
 import UnknownIcon from './UnknownIcon';
+import FilmComposerIcon from '~/../public/assets/film_composer_icon.png';
 import { cn } from '~/utils';
 
 const AssistantAvatar = ({ className = '', assistantName, avatar, size }: IconMapProps) => {
@@ -32,17 +33,28 @@ const AssistantAvatar = ({ className = '', assistantName, avatar, size }: IconMa
 
   return <Sparkles className={cn(assistantName === '' ? 'icon-2xl' : '', className)} />;
 };
+const FilmComposerAvatar = ({ className = '',assistantName, avatar, size }: IconMapProps) => {
+  return (
+    <img
+      src={FilmComposerIcon}
+      className={cn('text-token-secondary', className)}
+      alt="Film Composer"
+      width={size}
+      height={size}
+    />
+  );
+};
 
 export const icons = {
-  [EModelEndpoint.azureOpenAI]: AzureMinimalIcon,
-  [EModelEndpoint.openAI]: GPTIcon,
-  [EModelEndpoint.gptPlugins]: MinimalPlugin,
-  [EModelEndpoint.anthropic]: AnthropicIcon,
-  [EModelEndpoint.chatGPTBrowser]: LightningIcon,
-  [EModelEndpoint.google]: GoogleMinimalIcon,
-  [EModelEndpoint.bingAI]: BingAIMinimalIcon,
-  [EModelEndpoint.custom]: CustomMinimalIcon,
-  [EModelEndpoint.assistants]: AssistantAvatar,
-  [EModelEndpoint.azureAssistants]: AssistantAvatar,
+  [EModelEndpoint.azureOpenAI]: FilmComposerAvatar,
+  [EModelEndpoint.openAI]: FilmComposerAvatar,
+  [EModelEndpoint.gptPlugins]: FilmComposerAvatar,
+  [EModelEndpoint.anthropic]: FilmComposerAvatar,
+  [EModelEndpoint.chatGPTBrowser]: FilmComposerAvatar,
+  [EModelEndpoint.google]: FilmComposerAvatar,
+  [EModelEndpoint.bingAI]: FilmComposerAvatar,
+  [EModelEndpoint.custom]: FilmComposerAvatar,
+  [EModelEndpoint.assistants]: FilmComposerAvatar,
+  [EModelEndpoint.azureAssistants]: FilmComposerAvatar,
   unknown: UnknownIcon,
 };

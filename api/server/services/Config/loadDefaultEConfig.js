@@ -16,13 +16,13 @@ async function loadDefaultEndpointsConfig(req) {
 
   const endpointConfig = {
     [EModelEndpoint.openAI]: openAI,
-    [EModelEndpoint.assistants]: assistants,
-    [EModelEndpoint.azureAssistants]: azureAssistants,
-    [EModelEndpoint.azureOpenAI]: azureOpenAI,
-    [EModelEndpoint.google]: google,
-    [EModelEndpoint.bingAI]: bingAI,
-    [EModelEndpoint.chatGPTBrowser]: chatGPTBrowser,
-    [EModelEndpoint.gptPlugins]: gptPlugins,
+    // [EModelEndpoint.assistants]: assistants,
+    // [EModelEndpoint.azureAssistants]: azureAssistants,
+    // [EModelEndpoint.azureOpenAI]: azureOpenAI,
+    // [EModelEndpoint.google]: google,
+    // [EModelEndpoint.bingAI]: bingAI,
+    // [EModelEndpoint.chatGPTBrowser]: chatGPTBrowser,
+    // [EModelEndpoint.gptPlugins]: gptPlugins,
     [EModelEndpoint.anthropic]: anthropic,
   };
 

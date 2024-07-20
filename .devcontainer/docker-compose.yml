@@ -5,7 +5,7 @@ services:
     build:
       context: ..
       dockerfile: .devcontainer/Dockerfile
-    # restart: always
+    restart: always
     links:
       - mongodb
       - meilisearch
