@@ -78,7 +78,7 @@ export default function Settings({
   return (
     <div className="grid grid-cols-5 gap-6">
       <div className="col-span-5 flex flex-col items-center justify-start gap-6 sm:col-span-3">
-        <div className="grid w-full items-center gap-2">
+        {/* <div className="grid w-full items-center gap-2">
           <Label htmlFor="chatGptLabel" className="text-left text-sm font-medium">
             {localize('com_endpoint_custom_name')}{' '}
             <small className="opacity-40">({localize('com_endpoint_default_blank')})</small>
@@ -95,7 +95,7 @@ export default function Settings({
               removeFocusOutlines,
             )}
           />
-        </div>
+        </div> */}
         <div className="grid w-full items-center gap-2">
           <Label htmlFor="promptPrefix" className="text-left text-sm font-medium">
             {localize('com_endpoint_prompt_prefix')}{' '}

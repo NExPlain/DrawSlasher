@@ -246,7 +246,7 @@ export default {
   com_endpoint_prompt_prefix_assistants_placeholder:
     '在助手的主要指令之上设置额外的指令或上下文。如果为空，则忽略。',
   com_endpoint_custom_name: '自定义名称',
-  com_endpoint_prompt_prefix: '自定义指令',
+  com_endpoint_prompt_prefix: '思想钢印',
   com_endpoint_prompt_prefix_assistants: '额外命令',
   com_endpoint_instructions_assistants: '覆写命令',
   com_endpoint_temperature: '温度',
@@ -1503,7 +1503,7 @@ export const comparisons = {
   },
   com_endpoint_prompt_prefix: {
     english: 'Custom Instructions',
-    translated: '自定义指令',
+    translated: '思想钢印',
   },
   com_endpoint_prompt_prefix_assistants: {
     english: 'Additional Instructions',

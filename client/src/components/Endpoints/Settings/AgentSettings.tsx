@@ -34,7 +34,7 @@ export default function Settings({ conversation, setOption, models, readonly }: 
 
   return (
     <div className="grid grid-cols-5 gap-6">
-      <div className="col-span-5 flex flex-col items-center justify-start gap-6 sm:col-span-3">
+      {/* <div className="col-span-5 flex flex-col items-center justify-start gap-6 sm:col-span-3">
         <div className="grid w-full items-center gap-2">
           <SelectDropDown
             title={localize('com_endpoint_agent_model')}
@@ -46,7 +46,7 @@ export default function Settings({ conversation, setOption, models, readonly }: 
             containerClassName="flex w-full resize-none"
           />
         </div>
-      </div>
+      </div> */}
       <div className="col-span-5 flex flex-col items-center justify-start gap-6 px-3 sm:col-span-2">
         <HoverCard openDelay={300}>
           <HoverCardTrigger className="grid w-full items-center gap-2">

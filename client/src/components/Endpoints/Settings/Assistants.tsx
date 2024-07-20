@@ -109,7 +109,7 @@ export default function Settings({ conversation, setOption, models, readonly }: 
 
   return (
     <div className="grid grid-cols-6 gap-6">
-      <div className="col-span-6 flex flex-col items-center justify-start gap-6 sm:col-span-3">
+      {/* <div className="col-span-6 flex flex-col items-center justify-start gap-6 sm:col-span-3">
         <div className="grid w-full items-center gap-2">
           <SelectDropDown
             value={model ?? ''}
@@ -120,7 +120,7 @@ export default function Settings({ conversation, setOption, models, readonly }: 
             containerClassName="flex w-full resize-none"
           />
         </div>
-      </div>
+      </div> */}
       <div className="col-span-6 flex flex-col items-center justify-start gap-6 px-3 sm:col-span-3">
         <HoverCard openDelay={300}>
           <HoverCardTrigger className="grid w-full items-center gap-2">

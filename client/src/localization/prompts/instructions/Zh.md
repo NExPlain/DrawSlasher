@@ -893,7 +893,7 @@ Write a prompt that is mindful of the nuances in the language with respect to it
 
 - **com_endpoint_prompt_prefix**:
   - **english**: Custom Instructions
-  - **translated**: 自定义指令
+  - **translated**: 思想钢印
 
 - **com_endpoint_prompt_prefix_assistants**:
   - **english**: Additional Instructions
