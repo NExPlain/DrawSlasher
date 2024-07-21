@@ -15,6 +15,8 @@ import Landing from './Landing';
 import Header from './Header';
 import Footer from './Footer';
 import store from '~/store';
+import { localize } from '~/localization/Translation';
+import PromptPrefixEditor from './PromptPrefixEditor';
 
 function ChatView({ index = 0 }: { index?: number }) {
   const { conversationId } = useParams();
@@ -40,7 +42,6 @@ function ChatView({ index = 0 }: { index?: number }) {
   const methods = useForm<ChatFormValues>({
     defaultValues: { text: '' },
   });
-
   return (
     <ChatFormProvider {...methods}>
       <ChatContext.Provider value={chatHelpers}>
@@ -55,6 +56,7 @@ function ChatView({ index = 0 }: { index?: number }) {
             ) : (
               <Landing Header={<Header />} />
             )}
+            <PromptPrefixEditor />
             <div className="w-full border-t-0 pl-0 pt-2 dark:border-white/20 md:w-[calc(100%-.5rem)] md:border-t-0 md:border-transparent md:pl-0 md:pt-0 md:dark:border-transparent">
               <ChatForm index={index} />
               {/* <Footer /> */}
