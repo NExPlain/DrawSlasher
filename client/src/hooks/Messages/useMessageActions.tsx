@@ -7,6 +7,7 @@ import useCopyToClipboard from './useCopyToClipboard';
 import { useAuthContext } from '~/hooks/AuthContext';
 import useLocalize from '~/hooks/useLocalize';
 import store from '~/store';
+import useSelfReview from './useSelfReview';
 
 export type TMessageActions = Pick<
   TMessageProps,
@@ -24,6 +25,7 @@ export default function useMessageActions(props: TMessageActions) {
     ask,
     index,
     regenerate,
+    selfReview,
     latestMessage,
     handleContinue,
     setLatestMessage,
@@ -67,6 +69,13 @@ export default function useMessageActions(props: TMessageActions) {
 
   const copyToClipboard = useCopyToClipboard({ text, content });
 
+  const selfReviewMessage = useCallback(() => {
+    if ((isSubmitting && isCreatedByUser) || !message) {
+      return;
+    }
+    selfReview(message);
+  }, [isSubmitting, isCreatedByUser, message, selfReview]);
+
   const messageLabel = useMemo(() => {
     if (message?.isCreatedByUser) {
       return UsernameDisplay ? user?.name || user?.username : localize('com_user_message');
@@ -91,5 +100,6 @@ export default function useMessageActions(props: TMessageActions) {
     copyToClipboard,
     setLatestMessage,
     regenerateMessage,
+    selfReviewMessage,
   };
 }

@@ -47,6 +47,7 @@ const MessageRender = React.memo(
       copyToClipboard,
       setLatestMessage,
       regenerateMessage,
+      selfReviewMessage,
     } = useMessageActions({
       message: msg,
       currentEditId,
@@ -55,6 +56,7 @@ const MessageRender = React.memo(
     });
 
     const handleRegenerateMessage = useCallback(() => regenerateMessage(), [regenerateMessage]);
+    const handleSelfReviewMessage = useCallback(() => selfReviewMessage(), [selfReviewMessage]);
     const { isCreatedByUser, error, unfinished } = msg ?? {};
     const isLast = useMemo(
       () => !msg?.children?.length && (msg?.depth === latestMessage?.depth || msg?.depth === -1),
@@ -142,6 +144,7 @@ const MessageRender = React.memo(
                 handleContinue={handleContinue}
                 latestMessage={latestMessage}
                 isLast={isLast}
+                selfReview={handleSelfReviewMessage}
               />
             </SubRow>
           )}

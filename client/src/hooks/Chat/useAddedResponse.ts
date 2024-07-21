@@ -13,6 +13,7 @@ export default function useAddedResponse({ rootIndex }: { rootIndex: number }) {
     isSubmitting,
     setConversation,
     setIsSubmitting,
+    selfReview,
   } = useAddedHelpers({
     rootIndex,
     currentIndex,
@@ -35,5 +36,6 @@ export default function useAddedResponse({ rootIndex }: { rootIndex: number }) {
     setIsSubmitting,
     generateConversation,
     addedIndex: currentIndex,
+    selfReview,
   };
 }

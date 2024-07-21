@@ -27,6 +27,7 @@ export default function Message(props: TMessageProps) {
     handleContinue,
     copyToClipboard,
     regenerateMessage,
+    selfReviewMessage,
   } = useMessageHelpers(props);
 
   const { content, children, messageId = null, isCreatedByUser, error, unfinished } = message ?? {};
@@ -104,6 +105,7 @@ export default function Message(props: TMessageProps) {
                     handleContinue={handleContinue}
                     latestMessage={latestMessage}
                     isLast={isLast}
+                    selfReview={() => selfReviewMessage()}
                   />
                 </SubRow>
               )}

@@ -13,6 +13,7 @@ export default function useMessageHelpers(props: TMessageProps) {
     ask,
     index,
     regenerate,
+    selfReview,
     isSubmitting,
     conversation,
     latestMessage,
@@ -75,6 +76,14 @@ export default function useMessageHelpers(props: TMessageProps) {
 
   const copyToClipboard = useCopyToClipboard({ text, content });
 
+  const selfReviewMessage = () => {
+    if ((isSubmitting && isCreatedByUser) || !message) {
+      return;
+    }
+
+    selfReview(message);
+  };
+
   return {
     ask,
     edit,
@@ -89,5 +98,6 @@ export default function useMessageHelpers(props: TMessageProps) {
     handleContinue,
     copyToClipboard,
     regenerateMessage,
+    selfReviewMessage,
   };
 }

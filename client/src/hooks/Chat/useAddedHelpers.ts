@@ -53,7 +53,7 @@ export default function useAddedHelpers({
 
   const setSubmission = useSetRecoilState(store.submissionByIndex(currentIndex));
 
-  const { ask, regenerate } = useChatFunctions({
+  const { ask, regenerate, selfReview } = useChatFunctions({
     index: currentIndex,
     files,
     setFiles,
@@ -124,5 +124,6 @@ export default function useAddedHelpers({
     setIsSubmitting,
     handleRegenerate,
     handleStopGenerating,
+    selfReview,
   };
 }

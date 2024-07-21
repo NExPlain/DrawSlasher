@@ -20,6 +20,7 @@ type THoverButtons = {
   latestMessage: TMessage | null;
   isLast: boolean;
   index: number;
+  selfReview: () => void
 };
 
 export default function HoverButtons({
@@ -34,6 +35,7 @@ export default function HoverButtons({
   handleContinue,
   latestMessage,
   isLast,
+  selfReview,
 }: THoverButtons) {
   const localize = useLocalize();
   const { endpoint: _endpoint, endpointType } = conversation ?? {};
@@ -73,6 +75,14 @@ export default function HoverButtons({
 
   return (
     <div className="visible mt-0 flex justify-center gap-1 self-end text-gray-400 lg:justify-start">
+      {!isCreatedByUser && (<button
+        className="hover-button rounded-md p-2 text-white bg-green-500 hover:bg-green-600 hover:text-white dark:text-white dark:hover:bg-green-700 dark:hover:text-white disabled:dark:hover:text-gray-400 md:group-hover:visible md:group-[.final-completion]:visible"
+        onClick={selfReview}
+        type="button"
+        title="自我审查"
+      >
+        自我审查
+      </button>)}
       {TextToSpeech && <MessageAudio index={index} message={message} isLast={isLast} />}
       {isEditableEndpoint && (
         <button

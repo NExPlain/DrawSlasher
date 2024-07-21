@@ -257,8 +257,28 @@ export default function useChatFunctions({
     }
   };
 
+  const selfReview = ({ messageId }) => {
+    const messages = getMessages();
+    const message = messages?.find((element) => element.messageId == messageId);
+
+    if (message && !message.isCreatedByUser) {
+      ask({
+        text: '你是一个专业的剧本审核员，你有丰富的剧本经验，可以从世界观与设定、情节与节奏、人物介绍、奇观和视觉设计这些角度来对一个剧本进行开发可能的评价。审核一下你自己的这个剧本，并且给出3个新的剧本，思维发散，尽可能多的给出新颖的想法。',
+        overrideConvoId: message.conversationId ?? '',
+        parentMessageId: message.messageId,
+        conversationId: message.conversationId,
+        messageId: messageId,
+      }, { isRegenerate: false });
+    } else {
+      console.error(
+        'Failed to regenerate the message: parentMessage not found or not created by user.',
+      );
+    }
+  };
+
   return {
     ask,
     regenerate,
+    selfReview,
   };
 }
