@@ -1,11 +1,11 @@
 version: '3.8'
 services:
   api:
-    # build:
-    #   context: .
-    #   dockerfile: Dockerfile.multi
-    #   target: api-build
-    image: nexplain/drawslasher:0.2
+    build:
+      context: .
+      dockerfile: Dockerfile.multi
+      target: api-build
+        # image: nexplain/drawslasher:0.2
     container_name: LibreChat-API
     ports:
       - 3080:3080
