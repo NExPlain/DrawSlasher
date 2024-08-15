@@ -1,11 +1,11 @@
-import { memo } from 'react';
+import { memo, useContext, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 import { useGetMessagesByConvoId } from 'librechat-data-provider/react-query';
 import type { ChatFormValues } from '~/common';
 import { ChatContext, AddedChatContext, useFileMapContext, ChatFormProvider } from '~/Providers';
-import { useChatHelpers, useAddedResponse, useSSE } from '~/hooks';
+import { useChatHelpers, useAddedResponse, useSSE, ThemeContext } from '~/hooks';
 import MessagesView from './Messages/MessagesView';
 import { Spinner } from '~/components/svg';
 import Presentation from './Presentation';
@@ -17,6 +17,7 @@ import Footer from './Footer';
 import store from '~/store';
 import { localize } from '~/localization/Translation';
 import PromptPrefixEditor from './PromptPrefixEditor';
+import MoviePicker, { SelectedMovie } from './MoviePicker';
 
 function ChatView({ index = 0 }: { index?: number }) {
   const { conversationId } = useParams();
@@ -39,6 +40,18 @@ function ChatView({ index = 0 }: { index?: number }) {
   useSSE(rootSubmission, chatHelpers, false);
   useSSE(addedSubmission, addedChatHelpers, true);
 
+  const [selectedMovies, setSelectedMovies] = useState<SelectedMovie[]>([]);
+  const [movieString, setMovieString] = useState('');
+  const { theme } = useContext(ThemeContext);
+
+  const handleMovieChange = (movies: SelectedMovie[]) => {
+    setSelectedMovies(movies);
+  };
+
+  const handleStringChange = (str: string) => {
+    setMovieString(str);
+  };
+
   const methods = useForm<ChatFormValues>({
     defaultValues: { text: '' },
   });
@@ -57,6 +70,7 @@ function ChatView({ index = 0 }: { index?: number }) {
               <Landing Header={<Header />} />
             )}
             {/* <PromptPrefixEditor /> */}
+            <MoviePicker onChange={handleMovieChange} onStringChange={handleStringChange} theme={theme} />
             <div className="w-full border-t-0 pl-0 pt-2 dark:border-white/20 md:w-[calc(100%-.5rem)] md:border-t-0 md:border-transparent md:pl-0 md:pt-0 md:dark:border-transparent">
               <ChatForm index={index} />
               {/* <Footer /> */}

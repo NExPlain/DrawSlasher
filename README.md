@@ -39,7 +39,7 @@
 </p>
 
 # Build a new image to docker hub
-`docker buildx build --platform linux/amd64,linux/arm64 -t  nexplain/drawslasher:0.3 .`
+`docker buildx build --platform linux/amd64 -t  nexplain/drawslasher:0.3 .`
 # Run locally
 `docker-compose -f ./deploy-compose.yml up -d`
 # 📃 Features
