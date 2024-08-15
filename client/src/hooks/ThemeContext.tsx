@@ -16,7 +16,7 @@ const getInitialTheme = () => {
     }
   }
 
-  return 'light'; // light theme as the default;
+  return 'dark'; // dark theme as the default;
 };
 
 type ProviderValue = {
