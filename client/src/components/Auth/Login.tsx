@@ -1,3 +1,4 @@
+import React from 'react';
 import { useOutletContext } from 'react-router-dom';
 import { useAuthContext } from '~/hooks/AuthContext';
 import type { TLoginLayoutContext } from '~/common';
@@ -12,7 +13,7 @@ function Login() {
   const { startupConfig } = useOutletContext<TLoginLayoutContext>();
 
   return (
-    <>
+    <div className="w-full max-w-md space-y-8">
       {error && <ErrorMessage>{localize(getLoginError(error))}</ErrorMessage>}
       {startupConfig?.emailLoginEnabled && (
         <LoginForm
@@ -23,15 +24,14 @@ function Login() {
         />
       )}
       {startupConfig?.registrationEnabled && (
-        <p className="my-4 text-center text-sm font-light text-gray-700 dark:text-white">
-          {' '}
+        <p className="mt-4 text-center text-sm text-gray-600 dark:text-gray-400">
           {localize('com_auth_no_account')}{' '}
-          <a href="/register" className="p-1 text-green-500">
+          <a href="/register" className="font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300">
             {localize('com_auth_sign_up')}
           </a>
         </p>
       )}
-    </>
+    </div>
   );
 }
 

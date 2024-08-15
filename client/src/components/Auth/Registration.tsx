@@ -1,11 +1,12 @@
-import { useForm } from 'react-hook-form';
 import React, { useState, useEffect } from 'react';
+import { useForm } from 'react-hook-form';
 import { useNavigate, useOutletContext } from 'react-router-dom';
 import { useRegisterUserMutation } from 'librechat-data-provider/react-query';
 import type { TRegisterUser, TError } from 'librechat-data-provider';
 import type { TLoginLayoutContext } from '~/common';
 import { ErrorMessage } from './ErrorMessage';
 import { useLocalize } from '~/hooks';
+import { Film, User, Mail, Lock, Eye, EyeOff } from 'lucide-react';
 
 const Registration: React.FC = () => {
   const navigate = useNavigate();
@@ -22,6 +23,8 @@ const Registration: React.FC = () => {
 
   const [errorMessage, setErrorMessage] = useState<string>('');
   const [countdown, setCountdown] = useState<number>(3);
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState<boolean>(false);
 
   const registerUser = useRegisterUserMutation({
     onSuccess: () => {
@@ -51,12 +54,18 @@ const Registration: React.FC = () => {
     }
   }, [startupConfig, navigate]);
 
-  const renderInput = (id: string, label: string, type: string, validation: object) => (
-    <div className="mb-2">
+  const renderInput = (id: string, label: string, type: string, icon: React.ReactNode, validation: object) => (
+    <div className="mb-4">
+      <label htmlFor={id} className="sr-only">
+        {localize(label)}
+      </label>
       <div className="relative">
+        <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+          {icon}
+        </div>
         <input
           id={id}
-          type={type}
+          type={type === 'password' ? (id === 'password' ? (showPassword ? 'text' : 'password') : (showConfirmPassword ? 'text' : 'password')) : type}
           autoComplete={id}
           aria-label={localize(label)}
           {...register(
@@ -64,19 +73,26 @@ const Registration: React.FC = () => {
             validation,
           )}
           aria-invalid={!!errors[id]}
-          className="webkit-dark-styles peer block w-full appearance-none rounded-md border border-gray-300 bg-transparent px-3.5 pb-3.5 pt-4 text-sm text-gray-900 focus:border-green-500 focus:outline-none focus:ring-0 dark:border-gray-600 dark:text-white dark:focus:border-green-500"
-          placeholder=" "
+          className="block w-full rounded-md border border-gray-300 bg-white py-3 pl-10 pr-3 text-gray-900 placeholder-gray-400 focus:border-indigo-500 focus:ring-indigo-500 dark:border-gray-700 dark:bg-gray-800 dark:text-white dark:placeholder-gray-400 dark:focus:border-indigo-500 dark:focus:ring-indigo-500"
+          placeholder={localize(label)}
           data-testid={id}
         />
-        <label
-          htmlFor={id}
-          className="absolute start-1 top-2 z-10 origin-[0] -translate-y-4 scale-75 transform bg-white px-3 text-sm text-gray-500 duration-100 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:px-3 peer-focus:text-green-600 dark:bg-gray-900 dark:text-gray-400 dark:peer-focus:text-green-500 rtl:peer-focus:left-auto rtl:peer-focus:translate-x-1/4"
-        >
-          {localize(label)}
-        </label>
+        {type === 'password' && (
+          <button
+            type="button"
+            className="absolute inset-y-0 right-0 flex items-center pr-3"
+            onClick={() => id === 'password' ? setShowPassword(!showPassword) : setShowConfirmPassword(!showConfirmPassword)}
+          >
+            {(id === 'password' ? showPassword : showConfirmPassword) ? (
+              <EyeOff className="h-5 w-5 text-gray-400 dark:text-gray-300" />
+            ) : (
+              <Eye className="h-5 w-5 text-gray-400 dark:text-gray-300" />
+            )}
+          </button>
+        )}
       </div>
       {errors[id] && (
-        <span role="alert" className="mt-1 text-sm text-red-500 dark:text-red-900">
+        <span role="alert" className="mt-1 text-sm text-red-600 dark:text-red-400">
           {String(errors[id]?.message) ?? ''}
         </span>
       )}
@@ -84,7 +100,13 @@ const Registration: React.FC = () => {
   );
 
   return (
-    <>
+    <div className="w-full max-w-md space-y-8">
+      <div className="text-center">
+        <Film className="mx-auto h-12 w-12 text-indigo-500 dark:text-indigo-400" />
+        <h2 className="mt-6 text-3xl font-extrabold text-gray-900 dark:text-white">创建您的账户</h2>
+        <p className="mt-2 text-sm text-gray-600 dark:text-indigo-300">开始您的创意之旅</p>
+      </div>
+
       {errorMessage && (
         <ErrorMessage>
           {localize('com_auth_error_create')} {errorMessage}
@@ -92,7 +114,7 @@ const Registration: React.FC = () => {
       )}
       {registerUser.isSuccess && countdown > 0 && (
         <div
-          className="rounded-md border border-green-500 bg-green-500/10 px-3 py-2 text-sm text-gray-600 dark:text-gray-200"
+          className="rounded-md border border-green-500 bg-green-50 px-3 py-2 text-sm text-green-700 dark:border-green-500 dark:bg-green-900/10 dark:text-green-200"
           role="alert"
         >
           {localize(
@@ -105,85 +127,77 @@ const Registration: React.FC = () => {
         </div>
       )}
       {!startupConfigError && !isFetching && (
-        <>
-          <form
-            className="mt-6"
-            aria-label="Registration form"
-            method="POST"
-            onSubmit={handleSubmit((data: TRegisterUser) => registerUser.mutate(data))}
-          >
-            {renderInput('name', 'com_auth_full_name', 'text', {
-              required: localize('com_auth_name_required'),
-              minLength: {
-                value: 3,
-                message: localize('com_auth_name_min_length'),
-              },
-              maxLength: {
-                value: 80,
-                message: localize('com_auth_name_max_length'),
-              },
-            })}
-            {renderInput('username', 'com_auth_username', 'text', {
-              minLength: {
-                value: 2,
-                message: localize('com_auth_username_min_length'),
-              },
-              maxLength: {
-                value: 80,
-                message: localize('com_auth_username_max_length'),
-              },
-            })}
-            {renderInput('email', 'com_auth_email', 'email', {
-              required: localize('com_auth_email_required'),
-              minLength: {
-                value: 1,
-                message: localize('com_auth_email_min_length'),
-              },
-              maxLength: {
-                value: 120,
-                message: localize('com_auth_email_max_length'),
-              },
-              pattern: {
-                value: /\S+@\S+\.\S+/,
-                message: localize('com_auth_email_pattern'),
-              },
-            })}
-            {renderInput('password', 'com_auth_password', 'password', {
-              required: localize('com_auth_password_required'),
-              minLength: {
-                value: 8,
-                message: localize('com_auth_password_min_length'),
-              },
-              maxLength: {
-                value: 128,
-                message: localize('com_auth_password_max_length'),
-              },
-            })}
-            {renderInput('confirm_password', 'com_auth_password_confirm', 'password', {
-              validate: (value: string) =>
-                value === password || localize('com_auth_password_not_match'),
-            })}
-            <div className="mt-6">
-              <button
-                disabled={Object.keys(errors).length > 0}
-                type="submit"
-                aria-label="Submit registration"
-                className="w-full transform rounded-md bg-green-500 px-4 py-3 tracking-wide text-white transition-colors duration-200 hover:bg-green-550 focus:bg-green-550 focus:outline-none disabled:cursor-not-allowed disabled:hover:bg-green-500"
-              >
-                {localize('com_auth_continue')}
-              </button>
-            </div>
-          </form>
+        <form
+          className="mt-8 space-y-6"
+          aria-label="Registration form"
+          method="POST"
+          onSubmit={handleSubmit((data: TRegisterUser) => registerUser.mutate(data))}
+        >
+          {renderInput('name', 'com_auth_full_name', 'text', <User className="h-5 w-5 text-gray-400 dark:text-gray-300" />, {
+            required: localize('com_auth_name_required'),
+            minLength: {
+              value: 3,
+              message: localize('com_auth_name_min_length'),
+            },
+            maxLength: {
+              value: 80,
+              message: localize('com_auth_name_max_length'),
+            },
+          })}
+          {renderInput('username', 'com_auth_username', 'text', <User className="h-5 w-5 text-gray-400 dark:text-gray-300" />, {
+            minLength: {
+              value: 2,
+              message: localize('com_auth_username_min_length'),
+            },
+            maxLength: {
+              value: 80,
+              message: localize('com_auth_username_max_length'),
+            },
+          })}
+          {renderInput('email', 'com_auth_email', 'email', <Mail className="h-5 w-5 text-gray-400 dark:text-gray-300" />, {
+            required: localize('com_auth_email_required'),
+            pattern: {
+              value: /\S+@\S+\.\S+/,
+              message: localize('com_auth_email_pattern'),
+            },
+          })}
+          {renderInput('password', 'com_auth_password', 'password', <Lock className="h-5 w-5 text-gray-400 dark:text-gray-300" />, {
+            required: localize('com_auth_password_required'),
+            minLength: {
+              value: 8,
+              message: localize('com_auth_password_min_length'),
+            },
+            maxLength: {
+              value: 128,
+              message: localize('com_auth_password_max_length'),
+            },
+          })}
+          {renderInput('confirm_password', 'com_auth_password_confirm', 'password', <Lock className="h-5 w-5 text-gray-400 dark:text-gray-300" />, {
+            validate: (value: string) =>
+              value === password || localize('com_auth_password_not_match'),
+          })}
 
-          <p className="my-4 text-center text-sm font-light text-gray-700 dark:text-white">
-            {localize('com_auth_already_have_account')}{' '}
-            <a href="/login" aria-label="Login" className="p-1 text-green-500">
-              {localize('com_auth_login')}
-            </a>
-          </p>
-        </>
+          <div>
+            <button
+              type="submit"
+              className="group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-3 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50 dark:bg-indigo-500 dark:hover:bg-indigo-600 dark:focus:ring-offset-gray-900"
+            >
+              <span className="absolute inset-y-0 left-0 flex items-center pl-3">
+                <Film className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400 dark:text-indigo-300 dark:group-hover:text-indigo-200" />
+              </span>
+              {localize('com_auth_create_account')}
+            </button>
+          </div>
+        </form>
       )}
-    </>
+
+      <p className="mt-4 text-center text-sm text-gray-600 dark:text-gray-300">
+        {localize('com_auth_already_have_account')}{' '}
+        <a href="/login" className="font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300">
+          {localize('com_auth_login')}
+        </a>
+      </p>
+    </div>
   );
 };
 
