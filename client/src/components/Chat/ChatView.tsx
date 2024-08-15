@@ -56,7 +56,7 @@ function ChatView({ index = 0 }: { index?: number }) {
             ) : (
               <Landing Header={<Header />} />
             )}
-            <PromptPrefixEditor />
+            {/* <PromptPrefixEditor /> */}
             <div className="w-full border-t-0 pl-0 pt-2 dark:border-white/20 md:w-[calc(100%-.5rem)] md:border-t-0 md:border-transparent md:pl-0 md:pt-0 md:dark:border-transparent">
               <ChatForm index={index} />
               {/* <Footer /> */}
