@@ -18,16 +18,17 @@ interface MoviePickerProps {
 }
 
 const movieData: Movie[] = [
-  { id: 1, title: '肖申克的救赎', year: 1994, posterUrl: 'https://via.placeholder.com/150x225.png?text=Shawshank' },
-  { id: 2, title: '教父', year: 1972, posterUrl: 'https://via.placeholder.com/150x225.png?text=Godfather' },
-  { id: 3, title: '蝙蝠侠：黑暗骑士', year: 2008, posterUrl: 'https://via.placeholder.com/150x225.png?text=Dark+Knight' },
-  { id: 4, title: '十二怒汉', year: 1957, posterUrl: 'https://via.placeholder.com/150x225.png?text=12+Angry+Men' },
-  { id: 5, title: '辛德勒的名单', year: 1993, posterUrl: 'https://via.placeholder.com/150x225.png?text=Schindler\'s+List' },
-  { id: 6, title: '指环王3：王者归来', year: 2003, posterUrl: 'https://via.placeholder.com/150x225.png?text=LOTR' },
-  { id: 7, title: '低俗小说', year: 1994, posterUrl: 'https://via.placeholder.com/150x225.png?text=Pulp+Fiction' },
-  { id: 8, title: '黄金三镖客', year: 1966, posterUrl: 'https://via.placeholder.com/150x225.png?text=Good+Bad+Ugly' },
-  { id: 9, title: '搏击俱乐部', year: 1999, posterUrl: 'https://via.placeholder.com/150x225.png?text=Fight+Club' },
-  { id: 10, title: '阿甘正传', year: 1994, posterUrl: 'https://via.placeholder.com/150x225.png?text=Forrest+Gump' }
+  { id: 0, title: '猫鼠游戏', year: 2002, posterUrl: 'https://upload.wikimedia.org/wikipedia/zh/thumb/4/4d/Catch_Me_If_You_Can_2002_movie.jpg/220px-Catch_Me_If_You_Can_2002_movie.jpg' },
+  { id: 1, title: '肖申克的救赎', year: 1994, posterUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTalMh4_LurxZdLcovz6fMJnY-Nz7HubiXFZg&s' },
+  { id: 2, title: '教父', year: 1972, posterUrl: 'https://pic.pimg.tw/tony871204/1587345864-1851924135_wn.jpg' },
+  { id: 3, title: '蝙蝠侠：黑暗骑士', year: 2008, posterUrl: 'https://upload.wikimedia.org/wikipedia/zh/4/40/Thedarkknight.jpg' },
+  { id: 4, title: '十二怒汉', year: 1957, posterUrl: 'https://upload.wikimedia.org/wikipedia/zh/thumb/2/26/12_Angry_Men_1957.jpg/220px-12_Angry_Men_1957.jpg' },
+  { id: 5, title: '辛德勒的名单', year: 1993, posterUrl: 'https://upload.wikimedia.org/wikipedia/zh/thumb/3/38/Schindler%27s_List_movie.jpg/220px-Schindler%27s_List_movie.jpg' },
+  { id: 6, title: '指环王3：王者归来', year: 2003, posterUrl: 'https://upload.wikimedia.org/wikipedia/zh/e/e3/The_Lord_of_the_Rings_-_The_Return_of_the_King_poster.jpg' },
+  { id: 7, title: '低俗小说', year: 1994, posterUrl: 'https://upload.wikimedia.org/wikipedia/zh/8/82/Pulp_Fiction_cover.jpg' },
+  { id: 8, title: '黄金三镖客', year: 1966, posterUrl: 'https://upload.wikimedia.org/wikipedia/zh/thumb/3/3a/The_Good%EF%BC%8Cthe_bad_and_the_ugly.jpg/220px-The_Good%EF%BC%8Cthe_bad_and_the_ugly.jpg' },
+  { id: 9, title: '搏击俱乐部', year: 1999, posterUrl: 'https://upload.wikimedia.org/wikipedia/zh/thumb/f/fc/Fight_Club_poster.jpg/220px-Fight_Club_poster.jpg' },
+  { id: 10, title: '阿甘正传', year: 1994, posterUrl: 'https://upload.wikimedia.org/wikipedia/zh/thumb/a/ad/Forrestgumppost.jpg/220px-Forrestgumppost.jpg' },
 ];
 
 export const MoviePicker: React.FC<MoviePickerProps> = ({ onChange, onStringChange, theme }) => {
