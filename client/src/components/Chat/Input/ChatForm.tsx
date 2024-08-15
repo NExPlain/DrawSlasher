@@ -34,7 +34,7 @@ import FileRow from './Files/FileRow';
 import Mention from './Mention';
 import store from '~/store';
 
-const ChatForm = ({ index = 0 }) => {
+const ChatForm = ({ index = 0, movieString = '' }) => {
   const submitButtonRef = useRef<HTMLButtonElement>(null);
   const textAreaRef = useRef<HTMLTextAreaElement | null>(null);
 
@@ -91,6 +91,11 @@ const ChatForm = ({ index = 0 }) => {
   const assistantMap = useAssistantsMapContext();
   const { submitMessage, submitPrompt } = useSubmitMessage({ clearDraft });
 
+  const handleSubmit = (data) => {
+    const combinedText = `${data.text}\n参考以下电影: ${movieString}`.trim();
+    submitMessage({ text: combinedText });
+  };
+
   const { endpoint: _endpoint, endpointType } = conversation ?? { endpoint: null };
   const endpoint = endpointType ?? _endpoint;
 
@@ -120,7 +125,7 @@ const ChatForm = ({ index = 0 }) => {
 
   return (
     <form
-      onSubmit={methods.handleSubmit((data) => submitMessage(data))}
+      onSubmit={methods.handleSubmit(handleSubmit)}
       className="stretch mx-2 flex flex-row gap-3 last:mb-2 md:mx-4 md:last:mb-6 lg:mx-auto lg:max-w-2xl xl:max-w-3xl"
     >
       <div className="relative flex h-full flex-1 items-stretch md:flex-col">
