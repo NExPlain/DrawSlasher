@@ -10,7 +10,7 @@ export default function Root() {
   const { isAuthenticated } = useAuthContext();
   const [navVisible, setNavVisible] = useState(() => {
     const savedNavVisible = localStorage.getItem('navVisible');
-    return savedNavVisible !== null ? JSON.parse(savedNavVisible) : true;
+    return savedNavVisible !== null ? JSON.parse(savedNavVisible) : false;
   });
 
   const search = useSearch({ isAuthenticated });
