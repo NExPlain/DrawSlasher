@@ -199,7 +199,6 @@ export const parseConvo = ({
 };
 
 export const getResponseSender = (endpointOption: t.TEndpointOption): string => {
-  return '光合作用';
   const { model, endpoint, endpointType, modelDisplayLabel, chatGptLabel, modelLabel, jailbreak } =
     endpointOption;
   if (
