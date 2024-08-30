@@ -69,7 +69,7 @@ function AuthLayout({
       {/* Left side - Cinematic Intro */}
       <div className="hidden w-1/2 flex-col justify-center bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 px-12 lg:flex">
         <div className="mb-8 text-center">
-          <h1 className="mb-2 text-5xl font-bold text-white">千里</h1>
+          <h1 className="mb-2 text-5xl font-bold text-white">光合作用</h1>
           <p className="text-xl text-indigo-100">让创意插上翱翔的翅膀</p>
         </div>
         <div className="grid grid-cols-2 gap-6">

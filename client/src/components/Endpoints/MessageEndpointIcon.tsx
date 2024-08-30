@@ -92,7 +92,7 @@ const MessageEndpointIcon: React.FC<IconProps> = (props) => {
     [EModelEndpoint.anthropic]: {
       icon: <AnthropicIcon size={size * 0.5555555555555556} />,
       bg: '#d09a74',
-      name: '千里',
+      name: '光合作用',
     },
     [EModelEndpoint.bingAI]: {
       icon: jailbreak ? (

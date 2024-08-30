@@ -226,7 +226,7 @@ export const getResponseSender = (endpointOption: t.TEndpointOption): string => 
   }
 
   if (endpoint === EModelEndpoint.anthropic) {
-    return modelLabel ?? '千里';
+    return modelLabel ?? '光合作用';
   }
 
   if (endpoint === EModelEndpoint.google) {

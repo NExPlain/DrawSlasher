@@ -53,7 +53,7 @@ const ConvoIconURL: React.FC<ConvoIconURLProps> = ({
       >
         <img
           src={iconURL}
-          alt={'千里'}
+          alt={'光合作用'}
           style={styleImageMap[context ?? 'default'] ?? styleImageMap.default}
           className="object-cover"
         />

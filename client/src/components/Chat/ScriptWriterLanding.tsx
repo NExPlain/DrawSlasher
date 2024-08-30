@@ -11,7 +11,7 @@ const ScriptWriterLanding = ({ localize, theme }) => {
   return (
     <div className={`w-full ${bgColor} py-8`}>
       <div className="max-w-6xl mx-auto px-4">
-        <h1 className={`text-3xl font-bold mb-4 text-center ${textColor}`}>欢迎使用千里</h1>
+        <h1 className={`text-3xl font-bold mb-4 text-center ${textColor}`}>欢迎使用光合作用</h1>
         <p className={`text-lg mb-6 text-center ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
           让我们一起创造下一部震撼银幕的大作
         </p>
