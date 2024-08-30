@@ -16,7 +16,7 @@ const getInitialTheme = () => {
     }
   }
 
-  return 'dark'; // dark theme as the default;
+  return 'dark'; // light theme as the default;
 };
 
 type ProviderValue = {
@@ -44,6 +44,7 @@ export const ThemeProvider = ({ initialTheme, children }) => {
   const [theme, setTheme] = useState(getInitialTheme);
 
   const rawSetTheme = (rawTheme: string) => {
+    return 'dark';
     const root = window.document.documentElement;
     const darkMode = isDark(rawTheme);
 
