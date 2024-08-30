@@ -27,17 +27,17 @@ export default function Header() {
       <div className="hide-scrollbar flex w-full items-center justify-between gap-2 overflow-x-auto">
         <div className="flex items-center gap-2">
           {!navVisible && <HeaderNewChat />}
-          {interfaceConfig.endpointsMenu && <EndpointsMenu />}
-          {modelSpecs?.length > 0 && <ModelSpecsMenu modelSpecs={modelSpecs} />}
-          {<HeaderOptions interfaceConfig={interfaceConfig} />}
-          {interfaceConfig.presets && <PresetsMenu />}
-          {isSmallScreen && (
+          {/* {interfaceConfig.endpointsMenu && <EndpointsMenu />} */}
+          {/* {modelSpecs?.length > 0 && <ModelSpecsMenu modelSpecs={modelSpecs} />} */}
+          {/* {<HeaderOptions interfaceConfig={interfaceConfig} />} */}
+          {/* {interfaceConfig.presets && <PresetsMenu />} */}
+          {/* {isSmallScreen && (
             <ExportAndShareMenu
               isSharedButtonEnabled={startupConfig?.sharedLinksEnabled ?? false}
               className="pl-0"
             />
-          )}
-          <AddMultiConvo />
+          )} */}
+          {/* <AddMultiConvo /> */}
         </div>
         {!isSmallScreen && (
           <ExportAndShareMenu isSharedButtonEnabled={startupConfig?.sharedLinksEnabled ?? false} />

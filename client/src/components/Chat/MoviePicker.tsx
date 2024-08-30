@@ -19,6 +19,7 @@ interface MoviePickerProps {
 
 const movieData: Movie[] = [
   { id: 0, title: '猫鼠游戏', year: 2002, posterUrl: 'https://upload.wikimedia.org/wikipedia/zh/thumb/4/4d/Catch_Me_If_You_Can_2002_movie.jpg/220px-Catch_Me_If_You_Can_2002_movie.jpg' },
+  { id: 11, title: '流浪地球', year: 2019, posterUrl: 'https://upload.wikimedia.org/wikipedia/zh/thumb/0/05/%E3%80%8A%E6%B5%81%E6%B5%AA%E5%9C%B0%E7%90%83%E3%80%8B%E7%94%B5%E5%BD%B1%E6%B5%B7%E6%8A%A5.jpg/220px-%E3%80%8A%E6%B5%81%E6%B5%AA%E5%9C%B0%E7%90%83%E3%80%8B%E7%94%B5%E5%BD%B1%E6%B5%B7%E6%8A%A5.jpg' },
   { id: 1, title: '肖申克的救赎', year: 1994, posterUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTalMh4_LurxZdLcovz6fMJnY-Nz7HubiXFZg&s' },
   { id: 2, title: '教父', year: 1972, posterUrl: 'https://pic.pimg.tw/tony871204/1587345864-1851924135_wn.jpg' },
   { id: 3, title: '蝙蝠侠：黑暗骑士', year: 2008, posterUrl: 'https://upload.wikimedia.org/wikipedia/zh/4/40/Thedarkknight.jpg' },
@@ -29,13 +30,14 @@ const movieData: Movie[] = [
   { id: 8, title: '黄金三镖客', year: 1966, posterUrl: 'https://upload.wikimedia.org/wikipedia/zh/thumb/3/3a/The_Good%EF%BC%8Cthe_bad_and_the_ugly.jpg/220px-The_Good%EF%BC%8Cthe_bad_and_the_ugly.jpg' },
   { id: 9, title: '搏击俱乐部', year: 1999, posterUrl: 'https://upload.wikimedia.org/wikipedia/zh/thumb/f/fc/Fight_Club_poster.jpg/220px-Fight_Club_poster.jpg' },
   { id: 10, title: '阿甘正传', year: 1994, posterUrl: 'https://upload.wikimedia.org/wikipedia/zh/thumb/a/ad/Forrestgumppost.jpg/220px-Forrestgumppost.jpg' },
+  { id: 12, title: '流浪地球2', year: 2023, posterUrl: 'https://upload.wikimedia.org/wikipedia/zh/thumb/9/98/The_Wandering_Earth_II_poster.jpeg/220px-The_Wandering_Earth_II_poster.jpeg' },
 ];
 
 export const MoviePicker: React.FC<MoviePickerProps> = ({ onChange, onStringChange, theme }) => {
   const [selectedMovies, setSelectedMovies] = useState<SelectedMovie[]>([]);
   const [editingId, setEditingId] = useState<number | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
-  const [isExpanded, setIsExpanded] = useState(true);
+  const [isExpanded, setIsExpanded] = useState(false);
   const [saving, setSaving] = useState(false);
 
   // 主题相关的颜色

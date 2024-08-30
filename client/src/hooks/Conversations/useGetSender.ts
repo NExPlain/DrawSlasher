@@ -7,6 +7,7 @@ export default function useGetSender() {
   const { data: endpointsConfig = {} as TEndpointsConfig } = useGetEndpointsQuery();
   return useCallback(
     (endpointOption: TEndpointOption) => {
+      return '光合作用';
       const { modelDisplayLabel } = endpointsConfig?.[endpointOption.endpoint ?? ''] ?? {};
       return getResponseSender({ ...endpointOption, modelDisplayLabel });
     },

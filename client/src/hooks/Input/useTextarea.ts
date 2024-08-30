@@ -108,11 +108,9 @@ export default function useTextarea({
         return localize('com_endpoint_message_not_appendable');
       }
 
-      const sender = isAssistantsEndpoint(currentEndpoint)
-        ? getAssistantName({ name: assistantName, localize })
-        : getSender(conversation as TEndpointOption);
+      const sender = '光合作用';
 
-      return `${localize('com_endpoint_message')} ${sender ? sender : 'ChatGPT'}…`;
+      return `${localize('com_endpoint_message')} ${sender ? sender : '光合作用'}…`;
     };
 
     const placeholder = getPlaceholderText();

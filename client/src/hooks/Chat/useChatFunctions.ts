@@ -189,7 +189,7 @@ export default function useChatFunctions({
       unfinished: false,
       isCreatedByUser: false,
       isEdited: isEditOrContinue,
-      iconURL: convo.iconURL,
+      iconURL: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Leaf_1_web.jpg/250px-Leaf_1_web.jpg',
       error: false,
     };
 

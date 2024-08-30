@@ -192,7 +192,7 @@ const SidePanel = ({
                 : 'opacity-100',
             )}
           >
-            {interfaceConfig.modelSelect && (
+            {/* {interfaceConfig.modelSelect && (
               <div
                 className={cn(
                   'sticky left-0 right-0 top-0 z-[100] flex h-[52px] flex-wrap items-center justify-center bg-surface-primary-alt',
@@ -205,7 +205,7 @@ const SidePanel = ({
                   endpoint={endpoint}
                 />
               </div>
-            )}
+            )} */}
             <Nav
               resize={panelRef.current?.resize}
               isCollapsed={isCollapsed}

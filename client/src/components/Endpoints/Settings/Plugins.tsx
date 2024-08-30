@@ -172,7 +172,7 @@ export default function Settings({
         </>
       </div>
       <div className="col-span-5 flex flex-col items-center justify-start gap-6 px-3 sm:col-span-2">
-        <MultiSelectDropDown
+        {/* <MultiSelectDropDown
           showAbove={false}
           showLabel={false}
           setSelected={setTools}
@@ -185,7 +185,7 @@ export default function Settings({
           optionsClassName="w-full max-h-[275px] dark:bg-gray-700 z-10 border dark:border-gray-600"
           containerClassName="flex w-full resize-none border border-transparent"
           labelClassName="dark:text-white"
-        />
+        /> */}
         <HoverCard openDelay={300}>
           <HoverCardTrigger className="grid w-full items-center gap-2">
             <div className="mt-1 flex w-full justify-between">

@@ -490,7 +490,7 @@ export const alternateName = {
   [EModelEndpoint.chatGPTBrowser]: 'ChatGPT',
   [EModelEndpoint.gptPlugins]: 'Plugins',
   [EModelEndpoint.google]: 'Google',
-  [EModelEndpoint.anthropic]: 'Anthropic',
+  [EModelEndpoint.anthropic]: '光合作用',
   [EModelEndpoint.custom]: 'Custom',
 };
 

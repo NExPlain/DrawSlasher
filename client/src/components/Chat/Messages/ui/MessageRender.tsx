@@ -73,7 +73,6 @@ const MessageRender = React.memo(
       isLast && isCard && !isSubmittingFamily && msg.messageId !== latestMessage?.messageId
         ? () => setLatestMessage(msg)
         : undefined;
-
     return (
       <div
         className={cn(
@@ -103,7 +102,7 @@ const MessageRender = React.memo(
         <div
           className={cn('relative flex w-11/12 flex-col', msg?.isCreatedByUser ? '' : 'agent-turn')}
         >
-          <div className="select-none font-semibold">{messageLabel}</div>
+          <div className="select-none font-semibold">{msg?.isCreatedByUser?  messageLabel : '光合作用'}</div>
           <div className="flex-col gap-1 md:gap-3">
             <div className="flex max-w-full flex-grow flex-col gap-0">
               {msg?.plugin && <Plugin plugin={msg?.plugin} />}

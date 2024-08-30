@@ -32,7 +32,6 @@ function MessageIcon(
   let endpoint = messageSettings?.endpoint;
   endpoint = getIconEndpoint({ endpointsConfig, iconURL, endpoint });
   const endpointIconURL = getEndpointField(endpointsConfig, endpoint, 'iconURL');
-
   if (!message?.isCreatedByUser && iconURL && iconURL.includes('http')) {
     return (
       <ConvoIconURL

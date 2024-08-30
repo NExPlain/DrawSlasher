@@ -190,6 +190,7 @@ export function getDefaultModelSpec(modelSpecs?: TModelSpec[]) {
  * First, the admin defined default, then last selected spec, followed by first spec
  */
 export function getModelSpecIconURL(modelSpec: TModelSpec) {
+  return 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Leaf_1_web.jpg/250px-Leaf_1_web.jpg';
   return modelSpec.iconURL ?? modelSpec.preset.iconURL ?? modelSpec.preset.endpoint ?? '';
 }
 

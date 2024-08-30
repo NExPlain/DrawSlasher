@@ -25,16 +25,16 @@ type ProviderValue = {
 };
 
 const defaultContextValue: ProviderValue = {
-  theme: getInitialTheme(),
+  theme: getInitialTheme() ?? 'dark',
   setTheme: () => {
     return;
   },
 };
 
 export const isDark = (theme: string): boolean => {
-  if (theme === 'system') {
-    return window.matchMedia('(prefers-color-scheme: dark)').matches;
-  }
+  // if (theme === 'system') {
+  //   return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  // }
   return theme === 'dark';
 };
 
@@ -44,7 +44,6 @@ export const ThemeProvider = ({ initialTheme, children }) => {
   const [theme, setTheme] = useState(getInitialTheme);
 
   const rawSetTheme = (rawTheme: string) => {
-    return 'dark';
     const root = window.document.documentElement;
     const darkMode = isDark(rawTheme);
 

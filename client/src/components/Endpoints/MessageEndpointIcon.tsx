@@ -40,8 +40,8 @@ const MessageEndpointIcon: React.FC<IconProps> = (props) => {
         >
           <img
             className="shadow-stroke h-full w-full object-cover"
-            src={props.iconURL}
-            alt={assistantName}
+            src={'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Leaf_1_web.jpg/250px-Leaf_1_web.jpg'}
+            alt={'光合作用'}
             style={{ height: '80', width: '80' }}
           />
         </div>
@@ -66,8 +66,7 @@ const MessageEndpointIcon: React.FC<IconProps> = (props) => {
     },
     [EModelEndpoint.openAI]: {
       icon: <GPTIcon size={size * 0.5555555555555556} />,
-      bg:
-        typeof model === 'string' && model.toLowerCase().includes('gpt-4') ? '#AB68FF' : '#19C37D',
+      bg: '#19C37D',
       name: 'ChatGPT',
     },
     [EModelEndpoint.gptPlugins]: {
@@ -147,7 +146,7 @@ const MessageEndpointIcon: React.FC<IconProps> = (props) => {
     <div
       title={name}
       style={{
-        background: bg || 'transparent',
+        background: 'transparent',
         width: size,
         height: size,
       }}
@@ -156,7 +155,15 @@ const MessageEndpointIcon: React.FC<IconProps> = (props) => {
         props.className || '',
       )}
     >
-      {icon}
+      {/* {icon} */}
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Leaf_1_web.jpg/250px-Leaf_1_web.jpg"
+        alt="Leaf icon"
+        style={{
+          height: '100%',
+          objectFit: 'cover',
+        }}
+      />
       {error && (
         <span className="absolute right-0 top-[20px] -mr-2 flex h-3 w-3 items-center justify-center rounded-full border border-white bg-red-500 text-[10px] text-white">
           !

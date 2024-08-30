@@ -42,7 +42,7 @@ export default function ConvoIcon({
       {iconURL && iconURL.includes('http') ? (
         <ConvoIconURL
           preset={conversation}
-          endpointIconURL={endpointIconURL}
+          endpointIconURL={'endpointIconURL'}
           assistantName={assistantName}
           assistantAvatar={avatar}
           context={context}
@@ -55,7 +55,7 @@ export default function ConvoIcon({
               size,
               context,
               className,
-              iconURL: endpointIconURL,
+              iconURL: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Leaf_1_web.jpg/250px-Leaf_1_web.jpg',
               assistantName,
               endpoint,
               avatar,

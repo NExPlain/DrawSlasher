@@ -33,7 +33,7 @@ const ConvoIconURL: React.FC<ConvoIconURLProps> = ({
   assistantName,
   context,
 }) => {
-  const { iconURL = '' } = preset ?? {};
+  const { iconURL = '' } = 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Leaf_1_web.jpg/250px-Leaf_1_web.jpg';
   let Icon: (
     props: IconMapProps & {
       context?: string;
