@@ -114,15 +114,15 @@ function AuthLayout({
           )}
         </div>
 
-        {/* <div className="mb-4 flex items-center justify-between px-6">
-          <button
+        <div className="mb-4 flex items-center justify-between px-6">
+          {/* <button
             onClick={toggleTheme}
             className="rounded-full p-2 text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800"
           >
             {theme === 'dark' ? <Sun size={24} /> : <Moon size={24} />}
-          </button>
+          </button> */}
           <Footer startupConfig={startupConfig} />
-        </div> */}
+        </div> 
       </div>
     </div>
   );
