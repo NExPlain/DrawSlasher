@@ -30,20 +30,20 @@ function AuthLayout({
   error,
 }) {
   const localize = useLocalize();
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState('dark');
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme') || 'light';
+    const savedTheme = localStorage.getItem('theme') || 'dark';
     setTheme(savedTheme);
     document.documentElement.classList.toggle('dark', savedTheme === 'dark');
   }, []);
 
-  const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-    localStorage.setItem('theme', newTheme);
-    document.documentElement.classList.toggle('dark', newTheme === 'dark');
-  };
+  // const toggleTheme = () => {
+  //   const newTheme = theme === 'light' ? 'dark' : 'light';
+  //   setTheme(newTheme);
+  //   localStorage.setItem('theme', newTheme);
+  //   document.documentElement.classList.toggle('dark', newTheme === 'dark');
+  // };
 
   const DisplayError = () => {
     if (startupConfigError !== null && startupConfigError !== undefined) {
@@ -65,18 +65,30 @@ function AuthLayout({
   };
 
   return (
-    <div className={`flex min-h-screen ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'}`}>
+    <div className="flex min-h-screen dark:bg-gray-900 dark:text-white bg-gray-50 text-gray-900">
       {/* Left side - Cinematic Intro */}
-      <div className="hidden w-1/2 flex-col justify-center bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 px-12 lg:flex">
-        <div className="mb-8 text-center">
-          <h1 className="mb-2 text-5xl font-bold text-white">光合作用</h1>
-          <p className="text-xl text-indigo-100">让创意插上翱翔的翅膀</p>
-        </div>
-        <div className="grid grid-cols-2 gap-6">
-          <FeatureItem icon={<Feather />} title="创意激发" description="AI助手助你拓展灵感" />
-          <FeatureItem icon={<MessageSquare />} title="智能对话" description="与AI深度探讨剧本构思" />
-          <FeatureItem icon={<Film />} title="参考经典" description="汲取成功案例的精华" />
-          <FeatureItem icon={<Send />} title="即时反馈" description="获得专业建议，优化剧本" />
+      <div className="hidden w-1/2 lg:flex flex-col justify-center relative overflow-hidden">
+        <video
+          className="absolute top-0 left-0 w-full h-full object-cover"
+          autoPlay
+          loop
+          muted
+          playsInline
+        >
+          <source src="/assets/homepage.m4v" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <div className="relative z-10 px-12">
+          <div className="mb-8 text-center">
+            <h1 className="mb-2 text-5xl font-bold text-white">光合作用</h1>
+            <p className="text-xl text-indigo-100">让创意插上翱翔的翅膀</p>
+          </div>
+          <div className="grid grid-cols-2 gap-6">
+            <FeatureItem icon={<Feather />} title="创意激发" description="AI助手助你拓展灵感" />
+            <FeatureItem icon={<MessageSquare />} title="智能对话" description="与AI深度探讨剧本构思" />
+            <FeatureItem icon={<Film />} title="参考经典" description="汲取成功案例的精华" />
+            <FeatureItem icon={<Send />} title="即时反馈" description="获得专业建议，优化剧本" />
+          </div>
         </div>
       </div>
 
@@ -102,7 +114,7 @@ function AuthLayout({
           )}
         </div>
 
-        <div className="mb-4 flex items-center justify-between px-6">
+        {/* <div className="mb-4 flex items-center justify-between px-6">
           <button
             onClick={toggleTheme}
             className="rounded-full p-2 text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800"
@@ -110,7 +122,7 @@ function AuthLayout({
             {theme === 'dark' ? <Sun size={24} /> : <Moon size={24} />}
           </button>
           <Footer startupConfig={startupConfig} />
-        </div>
+        </div> */}
       </div>
     </div>
   );
