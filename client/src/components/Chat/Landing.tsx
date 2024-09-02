@@ -47,7 +47,7 @@ export default function Landing({ Header }: { Header?: ReactNode }) {
         <div className="relative h-full">
           <div className="absolute left-0 right-0">{Header && Header}</div>
           <div className="flex h-full flex-col items-center justify-center">
-            <ScriptWriterLanding localize={localize} theme={theme} />
+            <ScriptWriterLanding localize={localize} theme='dark' />
           </div>
         </div>
       </Tooltip>
