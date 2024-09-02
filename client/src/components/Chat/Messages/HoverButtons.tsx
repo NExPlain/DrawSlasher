@@ -79,9 +79,9 @@ export default function HoverButtons({
         className="hover-button rounded-md p-2 text-white bg-green-500 hover:bg-green-600 hover:text-white dark:text-white dark:hover:bg-green-700 dark:hover:text-white disabled:dark:hover:text-gray-400 md:group-hover:visible md:group-[.final-completion]:visible"
         onClick={selfReview}
         type="button"
-        title="自我审查"
+        title="剧本医生"
       >
-        自我审查
+        剧本医生
       </button>)}
       {TextToSpeech && <MessageAudio index={index} message={message} isLast={isLast} />}
       {isEditableEndpoint && (
