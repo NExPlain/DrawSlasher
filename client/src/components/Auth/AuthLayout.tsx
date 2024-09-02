@@ -33,8 +33,7 @@ function AuthLayout({
   const [theme, setTheme] = useState('dark');
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    setTheme(savedTheme);
+    const savedTheme = 'dark';
     document.documentElement.classList.toggle('dark', savedTheme === 'dark');
   }, []);
 
